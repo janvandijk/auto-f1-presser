@@ -1,6 +1,7 @@
 #define PIN_BUILTIN_LED LED_BUILTIN
 
-// http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
+// https://gist.github.com/MightyPork/6da26e382a7ad91b5496ee55fdc73db2
+#define KEYCODE_SPACE 0x2c
 #define KEYCODE_F1 0x3a
 
 // http://mitchtech.net/arduino-usb-hid-keyboard/
@@ -15,11 +16,11 @@ void setup() {
 }
 
 void loop() {
-	delay(5 * 1000);
+	delay(random(60,240) * 1000);
 
 	// Simulate keypress (and turn LED on)
 	digitalWrite(PIN_BUILTIN_LED, HIGH);
-	buf[2] = KEYCODE_F1;
+	buf[2] = KEYCODE_SPACE;
 	Serial.write(buf, 8);
 	delay(200);
 
